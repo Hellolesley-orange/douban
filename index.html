@@ -72,7 +72,7 @@ async function fetchOnlineInfo(item){
   return{title:page.title||title,extract,url:page.fullurl||'',thumbnail:page.thumbnail?.source||''};
 }
 async function hydrateOnline(item,targetId,label){
-  if(item.onlineSummary||item.onlineTried||item.onlineLoading)return;
+  if((item.onlineSummary&&item.poster)||item.onlineTried||item.onlineLoading)return;
   item.onlineLoading=true;
   try{
     const info=await fetchOnlineInfo(item);
